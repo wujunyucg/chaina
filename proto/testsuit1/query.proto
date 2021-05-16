@@ -1,0 +1,63 @@
+syntax = "proto3";
+package user.chaina.testsuit1;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// this line is used by starport scaffolding # 1
+import "testsuit1/sendData.proto";
+import "testsuit1/dataInfo.proto";
+
+option go_package = "github.com/user/chaina/x/testsuit1/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // this line is used by starport scaffolding # 2
+	rpc SendData(QueryGetSendDataRequest) returns (QueryGetSendDataResponse) {
+		option (google.api.http).get = "/user/chaina/testsuit1/sendData/{index}";
+	}
+	rpc SendDataAll(QueryAllSendDataRequest) returns (QueryAllSendDataResponse) {
+		option (google.api.http).get = "/user/chaina/testsuit1/sendData";
+	}
+
+	rpc DataInfo(QueryGetDataInfoRequest) returns (QueryGetDataInfoResponse) {
+		option (google.api.http).get = "/user/chaina/testsuit1/dataInfo/{id}";
+	}
+	rpc DataInfoAll(QueryAllDataInfoRequest) returns (QueryAllDataInfoResponse) {
+		option (google.api.http).get = "/user/chaina/testsuit1/dataInfo";
+	}
+
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetSendDataRequest {
+	string index = 1;
+}
+
+message QueryGetSendDataResponse {
+	SendData SendData = 1;
+}
+
+message QueryAllSendDataRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllSendDataResponse {
+	repeated SendData SendData = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetDataInfoRequest {
+	uint64 id = 1;
+}
+
+message QueryGetDataInfoResponse {
+	DataInfo DataInfo = 1;
+}
+
+message QueryAllDataInfoRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllDataInfoResponse {
+	repeated DataInfo DataInfo = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

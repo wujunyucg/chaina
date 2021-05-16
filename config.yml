@@ -1,8 +1,8 @@
 accounts:
   - name: alice
-    coins: ["1000token", "100000000stake"]
+    coins: ["100000000token", "1000000000000stake"]
   - name: bob
-    coins: ["500token"]
+    coins: ["50000000token"]
 validator:
   name: alice
   staked: "100000000stake"
@@ -10,5 +10,9 @@ client:
   vuex:
     path: "vue/src/store"
 faucet:
-  name: bob 
+  name: bob
   coins: ["5token"]
+genesis:
+  chain_id: "chaina"
+init:
+  home: "/mnt/d/cosmos/chaina/.chaina"
